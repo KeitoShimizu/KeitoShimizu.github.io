@@ -9,39 +9,90 @@
     body {
       font-family: sans-serif;
       max-width: 800px;
+      width: 100%;
       margin: 2rem auto;
       padding: 0 1rem;
       line-height: 1.6;
       color: #333;
       font-size: 16px;
-      text-align: left;
+      box-sizing: border-box;
     }
     header, nav, section, footer {
       text-align: left;
     }
-    nav a {
-      margin-right: 1rem;
+    h1 {
+      font-size: 2rem;
+      word-break: break-word;
+      margin: 0;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+    p, li {
+      font-size: 1rem;
+      word-break: break-word;
+    }
+
+    header, footer {
+      border-top: 2px solid #333;
+      border-bottom: 2px solid #333;
+      padding: 1rem 0;
+      margin: 2rem 0;
+      display: flex;               /* 追加：flexboxを使う */
+      align-items: center;         /* 中央揃え */
+      justify-content: space-between; /* 両端揃え（右詰め） */
+    }
+
+    nav.language-switch {
+      margin-left: auto;           /* 右端に配置する */
+    }
+
+    nav.language-switch a {
+      margin-left: 0.5rem;
       text-decoration: none;
       color: #333;
     }
-    header, footer {
-      border-top: 2px solid #333;    /* 上の線 */
-      border-bottom: 2px solid #333; /* 下の線 */
-      padding: 1rem 0;               /* 上下の余白を設定 */
-      margin: 2rem 0;                /* 前後のスペースを設定 */
+
+    /* 下線を引くためのclass */
+    .underline {
+      text-decoration: underline;
+    }
+
+    /* レスポンシブ調整 */
+    @media (max-width: 600px) {
+      body {
+        padding: 0 0.5rem;
+        margin: 1rem auto;
+      }
+      header, footer {
+        padding: 0.5rem 0;
+        margin: 1rem 0;
+        flex-direction: column; /* スマホでは縦並びに変更 */
+        align-items: flex-start;
+      }
+      nav.language-switch {
+        margin-top: 0.5rem;
+        margin-left: 0;         /* スマホでは左揃え */
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
+
 <body>
   <header>
-    <h1>Keito Shimizu</h1>
+    <div>
+      <h1>Keito Shimizu</h1>
+    </div>
+    
+    <nav class="language-switch">
+      <a href="index.html">日本語</a>
+      <a href="english.html">English</a>
+    </nav>
   </header>
-  
-  <nav>
-    <a href="index.html">日本語</a>
-    <a href="english.html">English</a>
-  </nav>
   
   <section id="bio">
     <h2>Profile</h2>
@@ -103,7 +154,7 @@
       <ol>
         <li>清水慧人 “重力の量子化と厳密くりこみ群”、原子核三者若手夏の学校、東京、2023年8月</li>
         <li>清水慧人 “O(3)非線形シグマ模型と非可換ボソン化の汎函数くりこみ群による解析”、場の理論と弦理論2024、京都大学基礎物理学研究所、2024年8月</li>
-        <li>春名純一、清水慧人、山田雅俊 “O(3)非線形シグマ模型と非可換ボソン化の汎函数くりこみ群による解析”、日本物理学会2024 秋季大会、北海道大学、2024年9月</li>
+        <li>春名純一、<u>清水慧人</u>、山田雅俊 “O(3)非線形シグマ模型と非可換ボソン化の汎函数くりこみ群による解析”、日本物理学会2024 秋季大会、北海道大学、2024年9月</li>
         <li>清水慧人 “Covariant Phase Space Formalism,” 原子核三者若手夏の学校、東京、2024年8月</li>
         <li>清水慧人 “Functional Renormalization Group Analysis of O(3) Nonlinear Sigma Model and Non-Abelian Bosonization Duality,” 関西地域セミナー 2024年、大阪大学、2024年10月</li>
       </ol>  
