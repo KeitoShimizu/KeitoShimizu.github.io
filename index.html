@@ -98,42 +98,50 @@
       50%  { transform: translateY(-3px); }
       100% { transform: translateY(0); }
     }
-    /* ドット調 NEW（文字そのものが点で描かれ、回転する） */
-    .new-dot {
+    /* LED風 NEW テロップ（中で左→右に流れて消える） */
+    .new-led {
       display: inline-block;
       margin-left: 8px;
-      font-size: 0.78em;
+      vertical-align: middle;
+    }
+
+    .new-led .marquee {
+      display: inline-block;
+      width: 64px;              /* 表示窓の横幅：好みで調整 */
+      height: 1.05em;
+      overflow: hidden;
+      border: 1px solid #d32f2f;
+      border-radius: 6px;
+      padding: 1px 6px;
+      box-sizing: border-box;
+    }
+
+    .new-led .text {
+      display: inline-block;
+      white-space: nowrap;
+      color: #d32f2f;
       font-weight: 800;
       letter-spacing: 0.08em;
-      line-height: 1;
-      vertical-align: middle;
 
-      /* ドットパターン */
-      background-image: radial-gradient(currentColor 1.2px, transparent 1.3px);
-      background-size: 6px 6px;
-      background-position: 0 0;
+      /* LEDっぽさ（任意：強すぎるなら消してOK） */
+      text-shadow: 0 0 6px rgba(211, 47, 47, 0.45);
 
-      /* 点を文字の形で抜く */
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-      /* 色（currentColorの実体） */
-      color: #d32f2f;
-
-      /* 回転 */
-      transform-origin: 50% 55%;
-      animation: newSpin 1.2s linear infinite;
+      /* 左端外から右端外へ */
+      transform: translateX(-120%);
+      animation: ledScroll 1.4s linear infinite;
     }
 
-    @keyframes newSpin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
+    /* 左→右へ流れて消える */
+    @keyframes ledScroll {
+      0%   { transform: translateX(-120%); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateX(120%); opacity: 0; }
     }
 
-    /* 任意：動きを減らす設定の人には回さない */
+    /* 任意：動きを減らす設定の人には止める */
     @media (prefers-reduced-motion: reduce) {
-      .new-dot { animation: none; }
+      .new-led .text { animation: none; transform: none; }
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -186,7 +194,8 @@
     </p>
     <ol>
         <li>
-            <u>Keito Shimizu</u>, Sotaro Sugishita <span class="new-dot">NEW</span><br>
+            <u>Keito Shimizu</u>, Sotaro Sugishita
+            <span class="new-led" aria-label="New"><span class="marquee"><span class="text">NEW</span></span></span><br>
             <em>"Asymptotic symmetry and confinement in three-dimensional QED"</em><br>
             <a href="https://journals.aps.org/prd/abstract/10.1103/x92g-9w2h" target="_blank">
                 Phys. Rev. D <strong>112</strong>, 105001 (2025)
