@@ -109,7 +109,8 @@
       align-items: center;
       width: 30px;                 /* 窓：必要なら調整 */
       height: 1em;
-      overflow: hidden;
+      overflow-x: hidden;  /* 横は隠す（窓の中を流れる） */
+      overflow-y: visible; /* 縦は見せる（上が切れない） */
 
       /* 上下なし・左右終端のみ・直角 */
       border: none;
