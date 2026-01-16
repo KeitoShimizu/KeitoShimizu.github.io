@@ -98,7 +98,6 @@
       50%  { transform: translateY(-3px); }
       100% { transform: translateY(0); }
     }
-    /* LED風 NEW テロップ（小さめ・枠線なし・センター揃え） */
     .new-led {
       display: inline-block;
       margin-left: 6px;
@@ -106,15 +105,20 @@
     }
 
     .new-led .marquee {
-      display: inline-flex;         /* 中身を縦横センターにしやすい */
-      align-items: center;          /* 縦センター */
-      justify-content: flex-start;  /* 流れるので左基準 */
-      width: 44px;                  /* 小さめの窓 */
-      height: 0.95em;               /* 行高に合わせて小さく */
+      display: inline-flex;
+      align-items: center;
+      width: 44px;                 /* 窓：必要なら調整 */
+      height: 0.95em;
       overflow: hidden;
-      border: none;                 /* 枠線を消す */
+
+      /* 上下なし・左右終端のみ・直角 */
+      border-left: 1px solid #d32f2f;
+      border-right: 1px solid #d32f2f;
+      border-top: none;
+      border-bottom: none;
       border-radius: 0;
-      padding: 0 4px;               /* 小さめ */
+
+      padding: 0 4px;
       box-sizing: border-box;
     }
 
@@ -123,24 +127,23 @@
       white-space: nowrap;
       color: #d32f2f;
 
-      font-weight: 800;            /* 細く（300〜500で調整） */
-      letter-spacing: 0.10em;      /* 少し広げると電光っぽい */
-
+      font-weight: 300;            /* 細く */
+      letter-spacing: 0.10em;
       line-height: 1;
-
-      /* 細く（横を縮める）＋縦長（縦を伸ばす） */
-      transform: translateX(-140%) scaleX(0.62) scaleY(1.25);
-
       text-shadow: none;
 
-      animation: ledScroll 6s linear infinite;
+      /* 細く（横を縮める）＋縦長（縦を伸ばす） */
+      transform: translateX(-140%) scaleX(0.58) scaleY(1.30);
+      transform-origin: left center;
+
+      animation: ledOne 4.5s linear infinite;  /* ゆっくり：秒数を増やすほど遅い */
     }
 
-    @keyframes ledScroll {
-      0%   { transform: translateX(-120%) scaleX(0.78); opacity: 0; }
-      10%  { opacity: 1; }
-      90%  { opacity: 1; }
-      100% { transform: translateX(120%) scaleX(0.78); opacity: 0; }
+    @keyframes ledOne {
+      0%   { transform: translateX(-140%) scaleX(0.58) scaleY(1.30); opacity: 0; }
+      12%  { opacity: 1; }
+      88%  { opacity: 1; }
+      100% { transform: translateX(140%) scaleX(0.58) scaleY(1.30); opacity: 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -203,13 +206,9 @@
         <li>
             <u>Keito Shimizu</u>, Sotaro Sugishita
             <span class="new-led" aria-label="New">
-              <span class="marquee">
-                <span class="track">
-                  <span class="text">NEW&nbsp;NEW&nbsp;NEW&nbsp;NEW&nbsp;NEW&nbsp;</span>
-                  <span class="text">NEW&nbsp;NEW&nbsp;NEW&nbsp;NEW&nbsp;NEW&nbsp;</span>
-                </span>
-              </span>
-            </span><br>            
+              <span class="marquee"><span class="text">NEW</span></span>
+            </span>
+            <br>            
             <em>"Asymptotic symmetry and confinement in three-dimensional QED"</em><br>
             <a href="https://journals.aps.org/prd/abstract/10.1103/x92g-9w2h" target="_blank">
                 Phys. Rev. D <strong>112</strong>, 105001 (2025)
