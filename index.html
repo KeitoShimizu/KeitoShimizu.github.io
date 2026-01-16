@@ -98,6 +98,43 @@
       50%  { transform: translateY(-3px); }
       100% { transform: translateY(0); }
     }
+    /* ドット調 NEW（文字そのものが点で描かれ、回転する） */
+    .new-dot {
+      display: inline-block;
+      margin-left: 8px;
+      font-size: 0.78em;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      vertical-align: middle;
+
+      /* ドットパターン */
+      background-image: radial-gradient(currentColor 1.2px, transparent 1.3px);
+      background-size: 6px 6px;
+      background-position: 0 0;
+
+      /* 点を文字の形で抜く */
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      /* 色（currentColorの実体） */
+      color: #d32f2f;
+
+      /* 回転 */
+      transform-origin: 50% 55%;
+      animation: newSpin 1.2s linear infinite;
+    }
+
+    @keyframes newSpin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* 任意：動きを減らす設定の人には回さない */
+    @media (prefers-reduced-motion: reduce) {
+      .new-dot { animation: none; }
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
@@ -149,7 +186,7 @@
     </p>
     <ol>
         <li>
-            <u>Keito Shimizu</u>, Sotaro Sugishita <span class="new-badge">NEW</span><br>
+            <u>Keito Shimizu</u>, Sotaro Sugishita <span class="new-dot">NEW</span><br>
             <em>"Asymptotic symmetry and confinement in three-dimensional QED"</em><br>
             <a href="https://journals.aps.org/prd/abstract/10.1103/x92g-9w2h" target="_blank">
                 Phys. Rev. D <strong>112</strong>, 105001 (2025)
