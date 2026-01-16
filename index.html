@@ -123,7 +123,7 @@
       white-space: nowrap;
       color: #d32f2f;
 
-      font-weight: 400;            /* 細く（300〜500で調整） */
+      font-weight: 800;            /* 細く（300〜500で調整） */
       letter-spacing: 0.10em;      /* 少し広げると電光っぽい */
 
       line-height: 1;
@@ -133,7 +133,7 @@
 
       text-shadow: none;
 
-      animation: ledScroll 2.5s linear infinite;
+      animation: ledScroll 6s linear infinite;
     }
 
     @keyframes ledScroll {
@@ -202,7 +202,14 @@
     <ol>
         <li>
             <u>Keito Shimizu</u>, Sotaro Sugishita
-            <span class="new-led" aria-label="New"><span class="marquee"><span class="text">NEW&nbsp;NEW&nbsp;NEW</span></span></span><br>
+            <span class="new-led" aria-label="New">
+              <span class="marquee">
+                <span class="track">
+                  <span class="text">NEW&nbsp;NEW&nbsp;NEW&nbsp;NEW&nbsp;NEW&nbsp;</span>
+                  <span class="text">NEW&nbsp;NEW&nbsp;NEW&nbsp;NEW&nbsp;NEW&nbsp;</span>
+                </span>
+              </span>
+            </span><br>            
             <em>"Asymptotic symmetry and confinement in three-dimensional QED"</em><br>
             <a href="https://journals.aps.org/prd/abstract/10.1103/x92g-9w2h" target="_blank">
                 Phys. Rev. D <strong>112</strong>, 105001 (2025)
