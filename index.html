@@ -113,7 +113,7 @@
       height: 0.95em;               /* 行高に合わせて小さく */
       overflow: hidden;
       border: none;                 /* 枠線を消す */
-      border-radius: 6px;
+      border-radius: 0;
       padding: 0 4px;               /* 小さめ */
       box-sizing: border-box;
     }
@@ -122,22 +122,20 @@
       display: inline-block;
       white-space: nowrap;
       color: #d32f2f;
-      font-weight: 800;
-      letter-spacing: 0.06em;
 
-      /* 文字を縦に細長く：横方向を縮める */
-      transform: translateX(-120%) scaleX(0.78);
+      font-weight: 400;            /* 細く（300〜500で調整） */
+      letter-spacing: 0.10em;      /* 少し広げると電光っぽい */
 
-      /* 文字の縦方向ズレを抑える */
       line-height: 1;
 
-      /* LEDっぽさ（不要なら削除可） */
-      text-shadow: 0 0 5px rgba(211, 47, 47, 0.35);
+      /* 細く（横を縮める）＋縦長（縦を伸ばす） */
+      transform: translateX(-140%) scaleX(0.62) scaleY(1.25);
 
-      animation: ledScroll 2.0s linear infinite;
+      text-shadow: none;
+
+      animation: ledScroll 2.5s linear infinite;
     }
 
-    /* 左→右へ流れて消える（transformはscaleX込みで指定） */
     @keyframes ledScroll {
       0%   { transform: translateX(-120%) scaleX(0.78); opacity: 0; }
       10%  { opacity: 1; }
@@ -204,7 +202,7 @@
     <ol>
         <li>
             <u>Keito Shimizu</u>, Sotaro Sugishita
-            <span class="new-led" aria-label="New"><span class="marquee"><span class="text">NEW</span></span></span><br>
+            <span class="new-led" aria-label="New"><span class="marquee"><span class="text">NEW&nbsp;NEW&nbsp;NEW</span></span></span><br>
             <em>"Asymptotic symmetry and confinement in three-dimensional QED"</em><br>
             <a href="https://journals.aps.org/prd/abstract/10.1103/x92g-9w2h" target="_blank">
                 Phys. Rev. D <strong>112</strong>, 105001 (2025)
